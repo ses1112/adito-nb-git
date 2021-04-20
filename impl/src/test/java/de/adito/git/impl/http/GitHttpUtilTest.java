@@ -49,7 +49,7 @@ class GitHttpUtilTest
                               .build());
   }
 
-  @Test
+  //@Test
   void testGitIntern()
   {
     String repoURL = "https://gitintern.aditosoftware.local/devs/aditoonline.git";
