@@ -40,7 +40,7 @@ jobs:
         with:
           step: restore
       - name: Native / Compile
-        run: mvn clean package -Pnative -Dmaven.javadoc.skip=true
+        run: mvn clean package -Pnative "-Dmaven.javadoc.skip=true"
       - name: Native / Integration Test
         run: mvn -Pnative test-compile failsafe:integration-test failsafe:verify
       - name: Save Maven cache
