@@ -40,9 +40,9 @@ jobs:
         with:
           step: restore
       - name: Maven / Download Dependencies
-        run: mvn -Dmaven.artifact.threads=30 -T 1C -B de.qaware.maven:go-offline-maven-plugin:1.2.8:resolve-dependencies
+        run: mvn -Dmaven.javadoc.skip=true -Dmaven.artifact.threads=30 -T 1C -B de.qaware.maven:go-offline-maven-plugin:1.2.8:resolve-dependencies
       - name: Native / Compile
-        run: mvn clean package -Pnative -Dquarkus.container-image.build=true
+        run: mvn -Dmaven.javadoc.skip=true clean package -Pnative -Dquarkus.container-image.build=true
       - name: Native / Integration Test
         run: mvn -Pnative test-compile failsafe:integration-test failsafe:verify
       - name: Save Maven cache
