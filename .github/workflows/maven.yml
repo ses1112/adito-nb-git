@@ -18,6 +18,7 @@ jobs:
         include:
           - os: macos-latest
           - os: ubuntu-latest
+          - os: windows-latest
     steps:
       - name: Setup / Checkout
         uses: actions/checkout@v2
@@ -38,10 +39,8 @@ jobs:
         uses: skjolber/maven-cache-github-action@v1
         with:
           step: restore
-      - name: Maven / Download Dependencies
-        run: mvn -Dmaven.javadoc.skip=true -Dmaven.artifact.threads=30 -T 1C -B de.qaware.maven:go-offline-maven-plugin:1.2.8:resolve-dependencies
       - name: Native / Compile
-        run: mvn -Dmaven.javadoc.skip=true clean package -Pnative -Dquarkus.container-image.build=true
+        run: mvn -Dmaven.javadoc.skip=true clean package -Pnative
       - name: Native / Integration Test
         run: mvn -Pnative test-compile failsafe:integration-test failsafe:verify
       - name: Save Maven cache
