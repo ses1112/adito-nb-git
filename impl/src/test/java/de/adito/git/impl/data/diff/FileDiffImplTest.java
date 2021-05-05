@@ -87,6 +87,7 @@ public class FileDiffImplTest
     _checkChangeDelta(changeDeltas.get(0), EChangeType.MODIFY, editList.get(0), 0, oldPart1.length(), 0, newPart1.length());
     _checkChangeDelta(changeDeltas.get(1), EChangeType.MODIFY, editList.get(1), oldPart1.length() + oldPart2.length(), oldVersion.length(),
                       newPart1.length() + oldPart2.length(), newVersion.length());
+    assertEquals("ha", "ho");
   }
 
   /**
